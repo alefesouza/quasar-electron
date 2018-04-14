@@ -1,0 +1,59 @@
+{
+  "name": "quasar-electron",
+  "version": "1.0.0",
+  "description": "Quasar application sample using Electron and Meetup API.",
+  "productName": "quasar-electron",
+  "cordovaId": "com.alefesouza.quasartest",
+  "author": "Alefe Souza <contact@alefesouza.com>",
+  "private": true,
+  "main": "src-electron/main-process/electron-main.js",
+  "scripts": {
+    "lint": "eslint --ext .js,.vue src",
+    "test": "echo \"No test specified\" && exit 0",
+    "android:build": "quasar build -m cordova -T android -t mat",
+    "android:key":
+      "keytool -genkey -v -keystore android_key.keystore -alias testalias -keyalg RSA -keysize 2048 -validity 3650",
+    "android:release":
+      "npm run android:build && jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore android_key.keystore src-cordova/platforms/android/app/build/outputs/apk/release/app-release-unsigned.apk testalias",
+    "electron:dev": "quasar dev -m electron",
+    "prepack:win": "quasar build -c -m electron -t mat -T win32 -A ia32",
+    "build:win":
+      "npm run prepack:win && build --win --ia32 --project dist/electron-mat/UnPackaged/ --prepackaged ../quasar-electron-win32-ia32"
+  },
+  "dependencies": {
+    "axios": "^0.18.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.2.1",
+    "devtron": "1.4.0",
+    "electron": "1.8.3",
+    "electron-builder": "^20.8.1",
+    "electron-debug": "1.5.0",
+    "electron-devtools-installer": "2.2.1",
+    "electron-packager": "11.1.0",
+    "eslint": "^4.18.2",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-friendly-formatter": "^3.0.0",
+    "eslint-loader": "^2.0.0",
+    "eslint-plugin-import": "^2.9.0",
+    "eslint-plugin-vue": "^4.3.0",
+    "quasar-cli": "^0.15.14"
+  },
+  "engines": {
+    "node": ">= 8.9.0",
+    "npm": ">= 5.6.0"
+  },
+  "browserslist": ["> 1%", "last 2 versions", "not ie <= 10"],
+  "build": {
+    "appId": "com.alefesouza.meetup.quasarelectron",
+    "copyright": "Copyright © 2018 Alefe Souza",
+    "productName": "Quasar Electron",
+    "win": {
+      "icon": "statics/icons/electron.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "installerIcon": "statics/icons/electron.ico"
+    }
+  }
+}

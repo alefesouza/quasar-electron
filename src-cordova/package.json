@@ -1,0 +1,19 @@
+{
+  "name": "com.alefesouza.quasarelectron",
+  "displayName": "quasar-electron",
+  "version": "1.0.0",
+  "description": "Quasar application sample using Electron and Meetup API.",
+  "author": "Alefe Souza <contact@alefesouza.com>",
+  "dependencies": {
+    "cordova-android": "^7.0.0",
+    "cordova-plugin-whitelist": "^1.3.3"
+  },
+  "cordova": {
+    "plugins": {
+      "cordova-plugin-whitelist": {}
+    },
+    "platforms": [
+      "android"
+    ]
+  }
+}
